@@ -37,7 +37,7 @@ Game::Game(){
     std::string p2_name = std::get<1>(names);
     Player p1(p1_name, BoardTile::TileX);
     Player p2(p2_name, BoardTile::TileO);
-    std::cout << p1;
+    std::cout << p1 << "\n" << p2 << "\n";
 
 
     Board board;
@@ -46,6 +46,7 @@ Game::Game(){
 
     auto move = getMoveFromPlayer();
     board.setTile(move.m_x, move.m_y,p1.m_tile);
+
 
     board.printBoard();
 

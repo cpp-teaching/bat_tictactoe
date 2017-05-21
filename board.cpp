@@ -21,12 +21,13 @@ std::ostream& operator <<(std::ostream& stream, BoardTile tile) {
 
 
 void Board::printBoard(){
-    std::cout << "\n------------\n";
+    std::cout << "\n-------------\n";
     for(int i =0 ; i <3; ++i){
+            std::cout << "|";
             for(int j = 0; j < 3; ++j){
-                std::cout << std::setw(1) << this->tiles[j+i*3] << " | ";
+               std::cout << std::setw(2) << this->tiles[j+i*3] << " |";
             }
-            std::cout << "\n------------\n";
+            std::cout << "\n-------------\n";
        }
 }
 
