@@ -45,7 +45,7 @@ Game::Game(){
     board.getTile(1,0);
 
     auto move = getMoveFromPlayer();
-    board.setTile(move.m_x, move.m_y, BoardTile::TileO);
+    board.setTile(move.m_x, move.m_y,p1.m_tile);
 
     board.printBoard();
 
