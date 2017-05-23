@@ -6,6 +6,7 @@
 # include <tuple>
 # include <string>
 # include <unordered_set>
+# include <memory>
 
 
 PlayerMove Game::getMoveFromPlayer(){
@@ -33,8 +34,8 @@ Game::Game(){
         Board board;
         board.printBoard();
 
-        run();
-
+        std::string p1_name = std::get<0>(names);
+        std::string p2_name = std::get<1>(names);
 }
 
 
@@ -42,23 +43,18 @@ void Game::run(){
 
      int round_counter = 0;
 
+     Board board;
+     board.getTile(0,0);
+
      while(round_counter < 9){
 
-        Board board;
-        board.getTile(0,0);
+            if(round_counter % 2 == 0){
 
-
-
-        if(round_counter % 2 == 0){
-
-            std::string p1_name = std::get<0>(names);
-            Player p1(p1_name, BoardTile::TileX);
-
-            std::cout << p1 << "\n";
+            std::cout << *p1() << "\n";
 
             auto move = getMoveFromPlayer();
 
-            board.setTile(move.m_x, move.m_y, p1.m_tile);
+            board.setTile(move.m_x, move.m_y, p1->m_tile);
 
             board.printBoard();
 
@@ -67,14 +63,12 @@ void Game::run(){
 
         else {
 
-            std::string p2_name = std::get<1>(names);
-            Player p2(p2_name, BoardTile::TileO);
 
-            std::cout << p2 << "\n";
+            std::cout << *p2() << "\n";
 
             auto move = getMoveFromPlayer();
 
-            board.setTile(move.m_x, move.m_y, p2.m_tile);
+            board.setTile(move.m_x, move.m_y, p2->m_tile);
 
             board.printBoard();
 
