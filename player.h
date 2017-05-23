@@ -1,11 +1,11 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
+# include "playermove.h"
+# include "board.h"
 # include <iostream>
 # include <string>
 # include <iomanip>
-# include "playermove.h"
-# include "board.h"
 
 class Player
 {
