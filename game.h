@@ -16,16 +16,18 @@ class Game
 public:
     Game();
 
+    PlayerMove getMoveFromPlayer();
+
     std::string p1_name;
     std::string p2_name;
-    std::unique_ptr<Player> p1 ();
-    std::unique_ptr<Player> p2 ();
+    std::unique_ptr<Player> p1 ;
+    std::unique_ptr<Player> p2 ;
 
 
 
     std::tuple<std::string,std::string> names = Player::askUserNames();
 
-    PlayerMove getMoveFromPlayer();
+
 
     void run();
 

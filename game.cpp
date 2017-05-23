@@ -50,7 +50,7 @@ void Game::run(){
 
             if(round_counter % 2 == 0){
 
-            std::cout << *p1() << "\n";
+            std::cout << *p1<< "\n";
 
             auto move = getMoveFromPlayer();
 
@@ -64,7 +64,7 @@ void Game::run(){
         else {
 
 
-            std::cout << *p2() << "\n";
+            std::cout << *p2<< "\n";
 
             auto move = getMoveFromPlayer();
 
