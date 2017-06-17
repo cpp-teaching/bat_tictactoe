@@ -9,6 +9,7 @@
 # include <memory>
 
 
+
 PlayerMove Game::getMoveFromPlayer(){
 
     int x;
@@ -41,8 +42,12 @@ Game::Game(){
 
 void Game::run(){
 
-     int round_counter = 0;
 
+
+     p1 = std::make_unique<Player>(p1_name, BoardTile::TileO);
+     p2 = std::make_unique<Player>(p2_name, BoardTile::TileX);
+
+    //p1.reset(new Player(p1_name, BoardTile::TileX));
      Board board;
      board.getTile(0,0);
 
@@ -50,29 +55,28 @@ void Game::run(){
 
             if(round_counter % 2 == 0){
 
-            std::cout << *p1<< "\n";
+                std::cout << *p1<< "\n";
 
-            auto move = getMoveFromPlayer();
+                auto move = getMoveFromPlayer();
 
-            board.setTile(move.m_x, move.m_y, p1->m_tile);
+                board.setTile(move.m_x, move.m_y, BoardTile::TileO);
 
-            board.printBoard();
+                board.printBoard();
 
-            round_counter++;
+                round_counter++;
         }
 
         else {
 
+                 std::cout << *p2<< "\n";
 
-            std::cout << *p2<< "\n";
+                auto move = getMoveFromPlayer();
 
-            auto move = getMoveFromPlayer();
+                board.setTile(move.m_x, move.m_y, BoardTile::TileX);
 
-            board.setTile(move.m_x, move.m_y, p2->m_tile);
+                board.printBoard();
 
-            board.printBoard();
-
-            round_counter++;
+                round_counter++;
         }
     }
 }

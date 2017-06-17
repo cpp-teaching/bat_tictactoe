@@ -20,14 +20,16 @@ public:
 
     std::string p1_name;
     std::string p2_name;
-    std::unique_ptr<Player> p1 ;
-    std::unique_ptr<Player> p2 ;
+    //BoardTile p1_tile;
+    //BoardTile p2_tile;
+    int round_counter = 0;
+
+    std::unique_ptr<Player> p1;
+    std::unique_ptr<Player> p2;
 
 
 
     std::tuple<std::string,std::string> names = Player::askUserNames();
-
-
 
     void run();
 

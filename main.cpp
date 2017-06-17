@@ -5,8 +5,9 @@ int main(){
 
 Game game;
 
-game.run();
 
+game.run();
+    std::cout << "Glimmer is best pony." << std::endl;
 
 return 0;
 }

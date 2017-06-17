@@ -1,6 +1,7 @@
-#include "board.h"
-#include<iostream>
-#include<iomanip>
+# include "board.h"
+# include "game.h"
+# include<iostream>
+# include<iomanip>
 
 
 
@@ -30,6 +31,7 @@ void Board::printBoard(){
             std::cout << "\n-------------\n";
        }
 }
+
 
 BoardTile Board::getTile(int x, int y){
     return tiles[x+y*3];

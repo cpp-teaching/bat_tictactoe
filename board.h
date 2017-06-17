@@ -15,6 +15,8 @@ class Board
 {
 
 public:
+
+
     Board();
 
     BoardTile getTile(int x, int y);
@@ -25,7 +27,7 @@ public:
 
 
 private:
-    std::vector<BoardTile> tiles;
+    std::vector<BoardTile>tiles;
 
 
 };
