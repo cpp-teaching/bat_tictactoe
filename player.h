@@ -12,10 +12,9 @@ class Player
 {
 public:
     std::string m_name;
-    BoardTile m_tile;
-    //BoardTile p1_tile;
-    //BoardTile p2_tile;
-
+    BoardTile m_tile;    
+    BoardTile p1_tile = BoardTile::TileO;
+    BoardTile p2_tile = BoardTile::TileX;
 
 
     static std::tuple<std::string, std::string> askUserNames();

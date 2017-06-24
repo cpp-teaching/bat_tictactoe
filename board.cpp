@@ -26,7 +26,7 @@ void Board::printBoard(){
     for(int i =0 ; i <3; ++i){
             std::cout << "|";
             for(int j = 0; j < 3; ++j){
-               std::cout << std::setw(2) << this->tiles[j+i*3] << " |";
+               std::cout << std::setw(2) << this->m_tiles[j+i*3] << " |";
             }
             std::cout << "\n-------------\n";
        }
@@ -34,18 +34,25 @@ void Board::printBoard(){
 
 
 BoardTile Board::getTile(int x, int y){
-    return tiles[x+y*3];
+    return m_tiles[x+y*3];
 }
 
 void Board::setTile(int x, int y, BoardTile value){
-    this->tiles[x+y*3] = value;
+    this->m_tiles[x+y*3] = value;
 }
+
+ const std::vector<BoardTile>& Board::tiles() const {
+     return m_tiles;
+ }
+
 
 Board::Board()
 {
-tiles.resize(9, BoardTile::Empty);
-
+    m_tiles.resize(9, BoardTile::Empty);
 
 
 }
+
+
+
 

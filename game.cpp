@@ -2,6 +2,7 @@
 # include "game.h"
 # include "player.h"
 # include "playermove.h"
+# include "winningcondition.h"
 # include <iostream>
 # include <tuple>
 # include <string>
@@ -35,6 +36,8 @@ Game::Game(){
         Board board;
         board.printBoard();
 
+        Board m_board;
+
         std::string p1_name = std::get<0>(names);
         std::string p2_name = std::get<1>(names);
 }
@@ -48,8 +51,6 @@ void Game::run(){
      p2 = std::make_unique<Player>(p2_name, BoardTile::TileX);
 
     //p1.reset(new Player(p1_name, BoardTile::TileX));
-     Board board;
-     board.getTile(0,0);
 
      while(round_counter < 9){
 
@@ -59,11 +60,14 @@ void Game::run(){
 
                 auto move = getMoveFromPlayer();
 
-                board.setTile(move.m_x, move.m_y, BoardTile::TileO);
+                m_board.setTile(move.m_x, move.m_y, p1->m_tile);
 
-                board.printBoard();
+                m_board.printBoard();
 
                 round_counter++;
+
+                Game::checkWinner();
+
         }
 
         else {
@@ -72,14 +76,76 @@ void Game::run(){
 
                 auto move = getMoveFromPlayer();
 
-                board.setTile(move.m_x, move.m_y, BoardTile::TileX);
+                m_board.setTile(move.m_x, move.m_y, p2->m_tile);
 
-                board.printBoard();
+                m_board.printBoard();
 
                 round_counter++;
+
+                Game::checkWinner();
         }
     }
 }
+
+
+void Game::checkWinner(){
+
+    const auto& tiles = m_board.tiles();
+
+    for(int i = 0; i <3; ++i){
+        if (tiles[i]!=BoardTile::Empty && tiles[i]==tiles[i+1*3] && tiles[i+1*3]==tiles[i+2*3]){
+            if(tiles[i] == BoardTile::TileX){
+            std::cout << "The winner is:  X" << std::endl;
+
+
+            }
+            else if(tiles[i] == BoardTile::TileO){
+                std::cout << "The winner is:  O" << std::endl;
+
+            }
+        }
+    }
+
+    for(int i = 0; i <3; ++i){
+        if (tiles[i]!=BoardTile::Empty && tiles[0+i]==tiles[1+i*3] && tiles[1+i*3]==tiles[2+i*3]){
+            if(tiles[i] == BoardTile::TileX){
+            std::cout << "The winner is:  X" << std::endl;
+
+
+            }
+            else if(tiles[i] == BoardTile::TileO){
+                std::cout << "The winner is:  O" << std::endl;
+
+            }
+        }
+    }
+
+
+        if (tiles[0]!=BoardTile::Empty && tiles[0]==tiles[4] && tiles[4]==tiles[8]){
+            if(tiles[0] == BoardTile::TileX){
+            std::cout << "The winner is:  X" << std::endl;
+
+
+            }
+            else if(tiles[0] == BoardTile::TileO){
+                std::cout << "The winner is:  O" << std::endl;
+
+            }
+        }
+
+        if (tiles[2]!=BoardTile::Empty && tiles[2]==tiles[4] && tiles[4]==tiles[6]){
+            if(tiles[2] == BoardTile::TileX){
+            std::cout << "The winner is:  X" << std::endl;
+
+
+            }
+            else if(tiles[2] == BoardTile::TileO){
+                std::cout << "The winner is:  O" << std::endl;
+
+            }
+        }
+}
+
 
 
 

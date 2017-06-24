@@ -1,11 +1,20 @@
-#ifndef WINNINGCONDITION_H
-#define WINNINGCONDITION_H
+# ifndef WINNINGCONDITION_H
+# define WINNINGCONDITION_H
+# include "board.h"
 
 
-class winningCondition
+
+
+
+class WinningCondition
 {
 public:
-    winningCondition();
+   std::vector<BoardTile> m_wc_tiles;
+
+   void check_winner(auto m_wc_tiles);
+
+   WinningCondition();
+
 };
 
-#endif // WINNINGCONDITION_H
+#endif

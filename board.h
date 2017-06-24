@@ -16,21 +16,25 @@ class Board
 
 public:
 
+    BoardTile getTile(int x, int y);
+    void printBoard();
+    void setTile(int x, int y, BoardTile value);    
+    const std::vector<BoardTile>& tiles() const;
+
 
     Board();
 
-    BoardTile getTile(int x, int y);
-    void printBoard();
-    void setTile(int x, int y, BoardTile value);
 
 
 
 
 private:
-    std::vector<BoardTile>tiles;
+    std::vector<BoardTile>m_tiles;
 
 
 };
+
+
 
 
 std::ostream& operator <<(std::ostream& stream, BoardTile tile);
